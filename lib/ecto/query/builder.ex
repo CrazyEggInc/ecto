@@ -813,6 +813,8 @@ defmodule Ecto.Query.Builder do
   @doc """
   Count the alias for the given query.
   """
+  def count_alias!(_query, index) when is_integer(index) and index >= 0, do: index
+
   def count_alias!(%{aliases: aliases} = query, name) do
     case aliases do
       %{^name => ix} ->
